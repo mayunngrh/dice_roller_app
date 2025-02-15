@@ -1,13 +1,23 @@
+import 'dart:ui';
+
+import 'package:dice_roller_app/dice_roller.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: DiceRollerApp(),
-  ));
+  runApp(DiceRollerApp());
 }
 
 class DiceRollerApp extends StatelessWidget {
   const DiceRollerApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: DiceRollerScreen());
+  }
+}
+
+class DiceRollerScreen extends StatelessWidget {
+  const DiceRollerScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +28,18 @@ class DiceRollerApp extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.deepPurple,
+      ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.deepPurple, Colors.indigo],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+          ),
+        ),
+        child: SizedBox.expand(
+          child: DiceRoller()
+        ),
       ),
     );
   }
